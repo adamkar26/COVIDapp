@@ -1,0 +1,126 @@
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>COVIDapp</title>
+    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700" rel="stylesheet">
+    <style>
+         html, body {
+      display: flex;
+      justify-content: center;
+      height: 100%;
+      }
+      body, div, h1, form, input, p {
+      padding: 0;
+      margin: 0;
+      outline: none;
+      font-family: Roboto, Arial, sans-serif;
+      font-size: 16px;
+      color: #666;
+      }
+      h1 {
+      padding: 10px 0;
+      font-size: 32px;
+      font-weight: 300;
+      text-align: center;
+      }
+      p {
+      font-size: 12px;
+      }
+      hr {
+      color: #a9a9a9;
+      opacity: 0.3;
+      }
+      .main-block {
+      min-width: 512px;
+      min-height: 512px;
+      padding: 10px 0;
+      margin: auto;
+      border-radius: 5px;
+      border: solid 1px #ccc;
+      box-shadow: 1px 2px 5px rgba(0,0,0,.31);
+      background: #ebebeb;
+      }
+      form {
+      margin: 0 30px;
+      }
+
+      .btn-block {
+      margin-top: 10px;
+      text-align: center;
+      }
+      button {
+      width: 100%;
+      padding: 10px 0;
+      margin: 10px auto;
+      border-radius: 5px;
+      border: none;
+      background: #1c87c9;
+      font-size: 14px;
+      font-weight: 600;
+      color: #fff;
+      }
+      button:hover {
+      background: #26a9e0;
+      }
+      .center {
+          display: block;
+          margin-left: auto;
+          margin-right: auto;
+          width: 50%;
+      }
+
+
+    </style>
+  </head>
+  <body>
+    <div class="main-block">
+      <h1>COVIDapp</h1>
+      <form enctype="multipart/form-data" action="" method="POST">
+        {% csrf_token %}
+        <hr><br><br>
+        <input type="file" name="img" id="img"  onchange="readURL(this);"/>
+          <img id="rtg" src="media/bacteria.png" alt="your image" style="width:300px;height:300px; margin-top: 40px" class="center"/>
+          <script>
+              function readURL(input) {
+                if (input.files && input.files[0]) {
+                    var reader = new FileReader();
+                    reader.onload = function (e) {
+                        document.getElementById('rtg').src = e.target.result;
+                    };
+                    reader.readAsDataURL(input.files[0]);
+                }
+            }
+          </script>
+        <br><br>
+          <label for="surname">Imię pacjenta:</label><br>
+          <input type="text"  name="surname" id="surname" />
+          <br>
+          <label for="name">Nazwisko pacjenta:</label><br>
+              <input type="text"  name="name" id="name" />
+          <br>
+          <label for="date_of_birth">Data urodzenia:</label><br>
+              <input type="date"  name="date_of_birth" id="date_of_birth" />
+          <br>
+          <label for="pesel">PESEL: </label><br>
+              <input type="text"  name="pesel" id="pesel" />
+          <br>
+          <label for="gender">Płeć: </label>
+          <select name="gender" id="gender">
+          <option value="male"> Mężczyzna</option>
+          <option value="female">Kobieta</option>
+          </select>
+          <br>
+           <label for="doctor_diagnose">Diagnoza lekarza: </label>
+          <select name="doctor_diagnose" id="doctor_diagnose">
+          <option value="True">COVID</option>
+          <option value="False">nie COVID</option>
+          </select>
+        <div class="btn-block">
+	<button type="submit" >Diagnozuj</button>
+        </div>
+      </form>
+
+    </div>
+  </body>
+</html>

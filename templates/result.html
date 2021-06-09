@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>COVIDapp</title>
+    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700" rel="stylesheet">
+    <style>
+         html, body {
+      display: flex;
+      justify-content: center;
+      height: 100%;
+      }
+      body, div, h1, form, input, p {
+      padding: 0;
+      margin: 0;
+      outline: none;
+      font-family: Roboto, Arial, sans-serif;
+      font-size: 16px;
+      color: #666;
+      }
+      h1 {
+      padding: 10px 0;
+      font-size: 32px;
+      font-weight: 300;
+      text-align: center;
+      }
+      p {
+      font-size: 12px;
+      }
+      hr {
+      color: #a9a9a9;
+      opacity: 0.3;
+      }
+      .main-block {
+      min-width: 512px;
+      min-height: 512px;
+      padding: 10px 0;
+      margin: auto;
+      border-radius: 5px;
+      border: solid 1px #ccc;
+      box-shadow: 1px 2px 5px rgba(0,0,0,.31);
+      background: #ebebeb;
+      }
+
+      .result-block{
+          margin-left: 20px;
+      }
+
+     .center {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 50%;
+    }
+    </style>
+  </head>
+  <body>
+    <div class="main-block">
+      <h1>COVIDapp</h1>
+        <hr>
+        <div class="result-block">
+            {% if diagnose == 'COVID' %}
+                <h3 id="diagnose" style="color: crimson">Diagnoza: {{ diagnose }} </h3>
+                {% else %}
+                <h3 id="diagnose" style="color: green">Diagnoza: {{ diagnose }} </h3>
+            {% endif %}
+
+            <h3>Wsparcie:  {{ support  }} </h3>
+        <br>
+        {% if diagnose == 'COVID' %}
+            <img src="media/cancel.png" style="width:300px;height:300px; margin-top: 40px; margin-bottom: 40px" class="center">
+        {% else %}
+             <img src="media/checked.png" style="width:300px;height:300px; margin-top: 40px; margin-bottom: 40px" class="center">
+        {% endif %}
+
+
+        </div>
+    </div>
+  </body>
+</html>
